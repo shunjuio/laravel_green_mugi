@@ -1,0 +1,2 @@
+[] This is MyCmd.sh
+[Fri Apr 21 08:34:57 UTC 2023] This is MyCmd.sh
