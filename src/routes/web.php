@@ -20,7 +20,7 @@ Route::get('/hello', 'HelloController@index')->name('hello');
 Route::get('hello/clear', 'HelloController@clear');
 Route::get('/hello/{id?}', 'HelloController@index');
 //Route::post('/hello', 'HelloController@send');
-
+Route::get('/testmail','TestMailController@send' );
 
 //Route::get('/hello/json', 'HelloController@json');
 //Route::get('/hello/json/{id}', 'HelloController@json');
