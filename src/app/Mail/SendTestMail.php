@@ -30,6 +30,5 @@ class SendTestMail extends Mailable
     {
         return $this->from('example@example.com')
             ->text('emails.test');
-//          ->view('view.name');
     }
 }

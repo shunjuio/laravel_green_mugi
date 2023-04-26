@@ -33,6 +33,6 @@ class SendTestMailJob implements ShouldQueue
     public function handle()
     {
       Mail::to('test@example.com')
-        ->queue(new SendTestMail()) ;
+        ->send(new SendTestMail());
     }
 }

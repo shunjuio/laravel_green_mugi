@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Jobs\SendTestMailJob;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Queue;
+
 
 class SendTestMailCommand extends Command
 {
@@ -12,7 +14,7 @@ class SendTestMailCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'stm:cmd';
+    protected $signature = 'send-mail';
 
     /**
      * The console command description.
@@ -38,7 +40,8 @@ class SendTestMailCommand extends Command
      */
     public function handle()
     {
-      SendTestMailJob::dispatch();
+      SendTestMailJob::dispatch()
+        ->onQueue('testmail');
       echo "Sent Queue" ."\n";
     }
 }
