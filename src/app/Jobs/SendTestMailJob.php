@@ -22,7 +22,6 @@ class SendTestMailJob implements ShouldQueue
      */
     public function __construct()
     {
-        //
     }
 
     /**

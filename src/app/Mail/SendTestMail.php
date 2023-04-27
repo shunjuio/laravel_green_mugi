@@ -16,9 +16,11 @@ class SendTestMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $text;
+
+    public function __construct($text = "Hello, World!　Part 4444")
     {
-        //
+      $this->text = $text;
     }
 
     /**
@@ -29,6 +31,7 @@ class SendTestMail extends Mailable
     public function build()
     {
         return $this->from('example@example.com')
-            ->text('emails.test');
+            ->text('emails.test')
+          ->with(['text' => $this->text]);
     }
 }
