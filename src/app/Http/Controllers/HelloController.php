@@ -11,29 +11,62 @@ use App\Events\PersonEvent;
 use App\MyClasses\PowerMyService;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Output\BufferedOutput;
+use GuzzleHttp\Client;
 
 
 class HelloController extends Controller
 {
 
-  public function index($id = -1)
+  public function index()
   {
-    $opt = [
-      '--method'=>'get',
-      '--path'=>'hello',
-      '--sort'=>'uri',
-      '--compact'=>null,
-    ];
-    $output = new BufferedOutput;
-    Artisan::call('route:list', $opt, $output);
-    $msg = $output->fetch();
-    $data = [
-      'msg'=> $msg,
-    ];
-//    dd($data);
+    $client = new Client([
+        'base_uri' => 'https://qiita.com/api/v2/',
+        'headers' => [
+            'Authorization' => 'Bearer ' . config('qiita.token'),
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ]);
 
-    dump($data); //
-    return view('hello.index', $data);
+    $response = $client->get('items', [
+        'query' => [
+            'page' => 1,
+            'per_page' => 20,
+        ],
+    ]);
+
+    $headers = $response->getHeaders();
+    $data = json_decode($response->getBody(), true);
+
+    return view('hello.index', compact('data','headers'));
+
+  }
+
+  public function search (Request $request)
+  {
+    $query = $request->query('keyword');
+
+    $client = new Client([
+      'base_uri' => 'https://qiita.com/api/v2/',
+      'headers' => [
+        'Authorization' => 'Bearer ' . config('qiita.token'),
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json',
+      ],
+    ]);
+
+    $response = $client->get('items', [
+      'query' => [
+        'page' => 1,
+        'per_page' => 20,
+        'query' => $query
+      ],
+    ]);
+    $headers = $response->getHeaders();
+
+    $data = json_decode($response->getBody(), true);
+
+    return view('hello.search', compact('data','query', 'headers'));
   }
 
   public function json($id = -1)
@@ -88,6 +121,5 @@ class HelloController extends Controller
     Artisan::call('event:clear');
     return redirect()->route('hello');
   }
-
 
 }
