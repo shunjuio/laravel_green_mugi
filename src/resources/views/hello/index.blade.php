@@ -10,7 +10,7 @@
 <body style="padding:10px;">
 <div>
   <form action="/search" method="GET">
-    <input type="text" name="keyword" >
+    <input type="text" name="q" >
     <input type="submit" value="検索" >
 
   </form>

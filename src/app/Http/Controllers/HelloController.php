@@ -19,54 +19,14 @@ class HelloController extends Controller
 
   public function index()
   {
-    $client = new Client([
-        'base_uri' => 'https://qiita.com/api/v2/',
-        'headers' => [
-            'Authorization' => 'Bearer ' . config('qiita.token'),
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-        ],
-    ]);
+    $data =[
+      'title'=> 'Title',
+      'content' => 'content',
+      'date' => '2024-03-03'
+    ];
 
-    $response = $client->get('items', [
-        'query' => [
-            'page' => 1,
-            'per_page' => 20,
-        ],
-    ]);
+    return view('hello.index', ['data'=>$data]);
 
-    $headers = $response->getHeaders();
-    $data = json_decode($response->getBody(), true);
-
-    return view('hello.index', compact('data','headers'));
-
-  }
-
-  public function search (Request $request)
-  {
-    $query = $request->query('keyword');
-
-    $client = new Client([
-      'base_uri' => 'https://qiita.com/api/v2/',
-      'headers' => [
-        'Authorization' => 'Bearer ' . config('qiita.token'),
-        'Content-Type' => 'application/json',
-        'Accept' => 'application/json',
-      ],
-    ]);
-
-    $response = $client->get('items', [
-      'query' => [
-        'page' => 1,
-        'per_page' => 20,
-        'query' => $query
-      ],
-    ]);
-    $headers = $response->getHeaders();
-
-    $data = json_decode($response->getBody(), true);
-
-    return view('hello.search', compact('data','query', 'headers'));
   }
 
   public function json($id = -1)

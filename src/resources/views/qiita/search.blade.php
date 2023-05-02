@@ -9,7 +9,7 @@
 <body style="padding:10px;">
 <h1>Hello/Search</h1>
 <div>
-  <form action="/search" method="GET">
+  <form action="qiita/search" method="GET">
     <input type="text" name="q" >
     <input type="submit" value="検索" >
 

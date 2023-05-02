@@ -6,18 +6,17 @@
         rel="stylesheet" type="text/css">
   <meta name="csrf-token" content="{{ csrf_token()  }}">
 </head>
+
 <body style="padding:10px;">
-<h1>Hello/Search</h1>
 <div>
-  <form action="/search" method="GET">
+  <form action="/qiita/search" method="GET">
     <input type="text" name="q" >
     <input type="submit" value="検索" >
 
   </form>
 </div>
+<h1>Hello/Index</h1>
 
-<h2>検索ワード：{{$query}}</h2>
-<h3>{{$headers['Total-Count'][0]}} 件</h3>
 
 <table class="table table-striped table-dark mt-5">
   <tr>
@@ -35,5 +34,6 @@
     </tr>
   @endforeach
 </table>
+{{$headers['Link'][0]}}
 </body>
 </html>
