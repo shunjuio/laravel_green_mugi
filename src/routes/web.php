@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/hello', 'HelloController@index')->name('hello');
 Route::get('hello/clear', 'HelloController@clear');
 Route::get('/hello/{id?}', 'HelloController@index');
+Route::get('/search', 'HelloController@search');
 //Route::post('/hello', 'HelloController@send');
 Route::get('/testmail/send','TestMailController@send' );
 Route::get('/testmail','TestMailController@index' );

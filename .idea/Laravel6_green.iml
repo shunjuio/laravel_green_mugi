@@ -108,6 +108,12 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/teamtnt/tntsearch" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/laravel/ui" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/beyondcode/laravel-dump-server" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/guzzlehttp/guzzle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

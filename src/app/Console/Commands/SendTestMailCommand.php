@@ -40,8 +40,8 @@ class SendTestMailCommand extends Command
      */
     public function handle()
     {
-      SendTestMailJob::dispatch()
-        ->onQueue('testmail');
+      SendTestMailJob::dispatch();
+//        ->onQueue('testmail');
       echo "Sent Queue" ."\n";
     }
 }

@@ -18,7 +18,7 @@ class SendTestMail extends Mailable
      */
     public $text;
 
-    public function __construct($text = "Hello, World!　Part 4444")
+    public function __construct($text = "Hello, World!　Part 1")
     {
       $this->text = $text;
     }
